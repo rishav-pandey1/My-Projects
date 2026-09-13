@@ -1,0 +1,66 @@
+checklist = []
+ready = input("Do you want to create a to-do list? (yes/no): ")
+ready_a = True
+if ready == "yes":
+    ready_a = True
+else:
+    ready_a = False
+while ready_a:
+
+    question = int(input("How many things do you need to do today? "))
+    for i in range(question):
+        checklist.append(input("Enter task: "))
+    print("Great! Everything has been saved")
+    more_yes = True
+    while more_yes:
+        more = input("Is that all? (yes/no): ")
+        if (more == "no"):
+            ask_again = int(input("How many more tasks do you want to add? "))
+            for i in range(ask_again):
+                    checklist.append(input("Enter task: "))
+            print("Great! Everything has been saved")
+             
+        else:
+            
+            print("Here is your to-do list: ")
+            for i in checklist:
+                    print(str(checklist.index(i) + 1) + ". " + i)
+                    print()
+            more_yes = False
+
+    completed = input("Have you completed any of your tasks? (yes/no): ")
+    completion = True
+    if completed == "yes":
+        completion = True
+        while completion:
+            numComp = int(input("How many tasks have you completed? "))
+            for i in range(numComp):
+                for i in checklist:
+                    print(str(checklist.index(i) + 1) + ". " + i)
+                    print()
+                ask = int(input("Which task have you completed? (Enter the task number): "))
+                checklist.remove(checklist[ask - 1])
+            completion = False
+        print("Great! Here is your updated to-do list: ")
+        for i in checklist:
+            print(str(checklist.index(i) + 1) + ". " + i)
+            print()
+        if len(checklist) == 0:
+            print("Congratulations! You have completed all your tasks for today!")
+            print("Have a great day!")
+            ready_a = False
+        more = input("Let me know if you want to add more tasks or mark more tasks as completed! (I do/I don't):")
+        if more == "I do":
+            ready_a = True
+        else:
+            ready_a = False
+            print("Have a great day!")
+    else:
+        print("Get to work!")
+        print("Have a great day!")
+        ready_a = False
+        
+
+
+
+    
